@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 15</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- FLOATING DECORATIONS -->
+    <div class="decorations" aria-hidden="true">
+        <span>♡</span>
+        <span>✧</span>
+        <span>🎀</span>
+        <span>♡</span>
+        <span>✦</span>
+        <span>♡</span>
+    </div>
+
+
+    <!-- SCENE 1: INVITATION -->
+    <main class="invitation" id="invitation">
+
+        <p class="eyebrow">
+            A LITTLE SOMETHING FOR YOU
+        </p>
+
+        <h1>Chapter 15</h1>
+
+        <p class="subtitle">
+            Every beautiful story deserves
+            a magical beginning.
+        </p>
+
+        <button
+            class="envelope"
+            id="envelope"
+            type="button"
+            aria-label="Open your birthday invitation"
+            aria-expanded="false"
+        >
+            <span class="envelope-back"></span>
+
+            <span class="letter">
+                <span>To my F ♡</span>
+                <strong>Happy 15th!</strong>
+                <small class="letter-signature">
+                     Nawra
+                </small>
+            </span>
+
+            <span class="envelope-flap"></span>
+            <span class="envelope-front"></span>
+            <span class="envelope-seal">♡</span>
+        </button>
+
+        <p class="hint" id="hint">
+            Tap the envelope to open ♡
+        </p>
+
+        <section
+            class="message-card"
+            id="messageCard"
+            hidden
+        >
+            <p class="eyebrow">
+                DEAR BIRTHDAY GIRL
+            </p>
+
+            <h2>You're officially 15! 🎀</h2>
+
+            <p>
+                Fifteen looks so pretty on you.
+                This little world was made
+                just to celebrate you.
+            </p>
+
+            <button
+                class="continue-btn"
+                id="continueBtn"
+                type="button"
+            >
+                Continue My Story ♡
+            </button>
+        </section>
+
+    </main>
+
+
+    <!-- SCENE 2: THE PINK GIFT -->
+    <section
+        class="gift-scene"
+        id="giftScene"
+        hidden
+    >
+
+        <p class="eyebrow">CHAPTER TWO ♡</p>
+
+        <h2>A Little Gift For You</h2>
+
+        <p class="gift-subtitle">
+            Something sweet is waiting inside...
+        </p>
+
+        <button
+            class="gift-box"
+            id="giftBox"
+            type="button"
+            aria-label="Tap three times to open your gift"
+        >
+            <span class="gift-lid">
+                <span class="lid-ribbon"></span>
+                <span class="gift-bow">🎀</span>
+            </span>
+
+            <span class="gift-bottom">
+                <span class="box-ribbon"></span>
+            </span>
+        </button>
+
+        <p class="gift-hint" id="giftHint">
+            Tap the gift 3 times ♡
+        </p>
+
+        <div
+            class="gift-reveal"
+            id="giftReveal"
+            hidden
+        >
+            <div class="gift-hearts">
+                💗 ✨ 💗
+            </div>
+
+            <h3>Surprise, Princess!</h3>
+
+            <p>
+                You deserve all the beautiful
+                things in the world.
+            </p>
+
+            <button
+                class="continue-btn"
+                id="wishBtn"
+                type="button"
+            >
+                Make a Wish ♡
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 3: MAKE A WISH -->
+    <section
+        class="cake-scene"
+        id="cakeScene"
+        hidden
+    >
+
+        <p class="eyebrow">CHAPTER THREE ♡</p>
+
+        <h2>Make a Wish</h2>
+
+        <p class="cake-subtitle">
+            Fifteen candles, fifteen wishes,
+            and a whole lot of magic.
+        </p>
+
+        <div class="cake-container">
+
+            <!-- Candles added by JavaScript -->
+            <div
+                class="candles"
+                id="candles"
+            ></div>
+
+            <div class="birthday-cake">
+
+                <div class="cake-top">
+                    <div class="cake-icing"></div>
+                    <span class="cake-bow">🎀</span>
+                </div>
+
+                <div class="cake-bottom">
+                    <div class="cake-icing-bottom"></div>
+                    <span class="cake-heart">
+                        ♡ 15 ♡
+                    </span>
+                </div>
+
+                <div class="cake-plate"></div>
+
+            </div>
+
+        </div>
+
+        <p
+            class="candle-counter"
+            id="candleCounter"
+            aria-live="polite"
+        >
+            15 candles left ♡
+        </p>
+
+        <p class="cake-hint" id="cakeHint">
+            Tap each flame to make your wishes!
+        </p>
+
+        <div
+            class="cake-surprise"
+            id="cakeSurprise"
+            hidden
+        >
+            <div class="surprise-stars">
+                ✨ 💗 ✨
+            </div>
+
+            <h3>Your wishes are on their way!</h3>
+
+            <p>
+                May this chapter be filled with
+                love, laughter, and everything
+                your heart dreams of.
+            </p>
+
+            <button
+                class="continue-btn"
+                id="doorBtn"
+                type="button"
+            >
+                One More Surprise ♡
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- SCENE 4: LETTERS TO YOU -->
+    <section
+        class="letters-section"
+        id="lettersScene"
+        hidden
+    >
+
+        <p class="eyebrow">
+            THE FINAL CHAPTER ♡
+        </p>
+
+        <h2>Letters to You 💌</h2>
+
+        <p class="letters-subtitle">
+            Little pieces of my heart,
+            written just for you.
+        </p>
+
+        <!-- SEVEN LETTERS -->
+        <div class="letters-grid">
+
+            <!-- LETTER 01 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="1"
+            >
+                <span class="letter-number">
+                    LETTER 01
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    To My Forever Little Girl
+                </strong>
+                <small>Emotional ♡</small>
+            </button>
+
+            <!-- LETTER 02 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="2"
+            >
+                <span class="letter-number">
+                    LETTER 02
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    A Little Advice at 15
+                </strong>
+                <small>Big Sister Advice 🎀</small>
+            </button>
+
+            <!-- LETTER 03 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="3"
+            >
+                <span class="letter-number">
+                    LETTER 03
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    Unfortunately, You're Stuck With Me
+                </strong>
+                <small>Funny 😂</small>
+            </button>
+
+            <!-- LETTER 04 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="4"
+            >
+                <span class="letter-number">
+                    LETTER 04
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    When You Forget How Amazing You Are
+                </strong>
+                <small>Confidence ✨</small>
+            </button>
+
+            <!-- LETTER 05 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="5"
+            >
+                <span class="letter-number">
+                    LETTER 05
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    Open When You're Sad
+                </strong>
+                <small>Comfort 💜</small>
+            </button>
+
+            <!-- LETTER 06 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="6"
+            >
+                <span class="letter-number">
+                    LETTER 06
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    Things I Hope You Never Forget
+                </strong>
+                <small>Little Reminders 🌷</small>
+            </button>
+
+            <!-- LETTER 07 -->
+            <button
+                class="letter-card"
+                type="button"
+                data-letter="7"
+            >
+                <span class="letter-number">
+                    LETTER 07
+                </span>
+                <span class="mini-envelope">💌</span>
+                <strong>
+                    One Last Thing...
+                </strong>
+                <small>The Final Letter ♡</small>
+            </button>
+
+        </div>
+
+
+        <!-- FINAL LOVE NOTE -->
+        <div class="final-note">
+
+            <span class="final-sparkles">
+                ♡ ✧ ♡
+            </span>
+
+            <p class="eyebrow">
+                ONE LAST LITTLE THING
+            </p>
+
+            <h3>That's a Wrap, Princess! 🎀</h3>
+
+            <p>
+                You've officially reached the end
+                of your little birthday surprise!
+            </p>
+
+            <p>
+                But Chapter 15 is just the beginning
+                of so many beautiful things.
+                Keep dreaming, keep shining,
+                and never forget how loved you are.
+            </p>
+
+            <p>
+                And remember... you're still stuck
+                with me forever. Lucky you! 🤭♡
+            </p>
+
+            <span class="final-signature">
+                 Nawra
+            </span>
+
+        </div>
+
+
+        <!-- OPENED LETTER MODAL -->
+        <div
+            class="letter-modal"
+            id="letterModal"
+            hidden
+        >
+
+            <div
+                class="letter-paper"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="openedLetterTitle"
+            >
+
+                <button
+                    class="close-letter"
+                    id="closeLetter"
+                    type="button"
+                    aria-label="Close letter"
+                >
+                    &times;
+                </button>
+
+                <p class="eyebrow">
+                    A LETTER FOR YOU ♡
+                </p>
+
+                <h3 id="openedLetterTitle"></h3>
+
+                <p id="openedLetterText"></p>
+
+                <small class="modal-signature">
+                    N ♡
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
