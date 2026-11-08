@@ -1,12 +1,12 @@
 
-// ===================================
-// CHAPTER 15 - INTERACTIVE WEBSITE
-// ===================================
+/* ===================================
+   CHAPTER 15 - INTERACTIVE WEBSITE
+   =================================== */
 
 
-// ===================================
-// SCENE 1: THE INVITATION
-// ===================================
+/* ===================================
+   SCENE 1: THE INVITATION
+   =================================== */
 
 const envelope = document.getElementById("envelope");
 const messageCard = document.getElementById("messageCard");
@@ -27,18 +27,20 @@ envelope.addEventListener("click", () => {
     setTimeout(() => {
         messageCard.hidden = false;
 
-        messageCard.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-        });
+        if (!invitation.hidden) {
+            messageCard.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
     }, 900);
 
 });
 
 
-// ===================================
-// SCENE 2: THE PINK GIFT
-// ===================================
+/* ===================================
+   SCENE 2: THE PINK GIFT
+   =================================== */
 
 const giftScene = document.getElementById("giftScene");
 const giftBox = document.getElementById("giftBox");
@@ -50,15 +52,7 @@ let giftClicks = 0;
 
 // Go from invitation to gift
 continueBtn.addEventListener("click", () => {
-
-    invitation.hidden = true;
-    giftScene.hidden = false;
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
+    showChapter(1);
 });
 
 // Open the gift after 3 taps
@@ -89,20 +83,20 @@ giftBox.addEventListener("click", () => {
         setTimeout(() => {
             giftReveal.hidden = false;
 
-            giftReveal.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest"
-            });
+            if (!giftScene.hidden) {
+                giftReveal.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest"
+                });
+            }
         }, 900);
-
     }
-
 });
 
 
-// ===================================
-// SCENE 3: MAKE A WISH
-// ===================================
+/* ===================================
+   SCENE 3: MAKE A WISH
+   =================================== */
 
 const cakeScene = document.getElementById("cakeScene");
 const candlesContainer = document.getElementById("candles");
@@ -115,15 +109,7 @@ let candlesLeft = 15;
 
 // Go from gift to birthday cake
 wishBtn.addEventListener("click", () => {
-
-    giftScene.hidden = true;
-    cakeScene.hidden = false;
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
+    showChapter(2);
 });
 
 // Create 15 interactive candles
@@ -170,29 +156,22 @@ for (let i = 1; i <= 15; i++) {
 
                 cakeSurprise.hidden = false;
 
-                cakeSurprise.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest"
-                });
+                if (!cakeScene.hidden) {
+                    cakeSurprise.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest"
+                    });
+                }
 
             }, 700);
-
         }
-
     });
-
 }
 
 
-// ===================================
-// SCENE 4: THE SECRET DOOR
-// Coming in the next step!
-// ===================================
-
-
-// ===================================
-// SCENE 4: LETTERS TO YOU
-// ===================================
+/* ===================================
+   SCENE 4: LETTERS TO YOU
+   =================================== */
 
 const lettersScene = document.getElementById("lettersScene");
 const letterModal = document.getElementById("letterModal");
@@ -201,6 +180,7 @@ const openedLetterTitle = document.getElementById("openedLetterTitle");
 const openedLetterText = document.getElementById("openedLetterText");
 
 const letters = {
+
     1: {
         title: "To My Forever Little Girl",
         text: `No matter how old you get, you'll always be my little Fofa. I can't believe you're already 15! Watching you grow up makes me so happy, but can you please stop growing up so fast? 🥹 I love you more than you'll ever know. ♡`
@@ -243,14 +223,14 @@ Happy 15th birthday, my Fofa. I love you endlessly. ♡`
 
 // Go from cake to letters
 doorBtn.addEventListener("click", () => {
-    cakeScene.hidden = true;
-    lettersScene.hidden = false;
-    window.scrollTo(0, 0);
+    showChapter(3);
 });
 
 // Open a letter
 document.querySelectorAll(".letter-card").forEach(card => {
+
     card.addEventListener("click", () => {
+
         const number = card.dataset.letter;
         const letter = letters[number];
 
@@ -258,13 +238,15 @@ document.querySelectorAll(".letter-card").forEach(card => {
 
         openedLetterTitle.textContent = letter.title;
         openedLetterText.textContent = letter.text;
+
         letterModal.hidden = false;
         document.body.style.overflow = "hidden";
+
         closeLetter.focus();
     });
 });
 
-// Close the letter
+// Close a letter
 function hideLetter() {
     letterModal.hidden = true;
     document.body.style.overflow = "";
@@ -283,4 +265,78 @@ document.addEventListener("keydown", event => {
         hideLetter();
     }
 });
+
+
+/* ===================================
+   BACK BUTTON & CHAPTER NAVIGATION
+   =================================== */
+
+const backBtn = document.getElementById("backBtn");
+
+const chapters = [
+    invitation,
+    giftScene,
+    cakeScene,
+    lettersScene
+];
+
+let currentChapter = chapters.findIndex(
+    chapter => !chapter.hidden
+);
+
+if (currentChapter === -1) {
+    currentChapter = 0;
+}
+
+// Show a chapter
+function showChapter(index) {
+
+    if (index < 0 || index >= chapters.length) {
+        return;
+    }
+
+    // Close letter modal if open
+    if (!letterModal.hidden) {
+        hideLetter();
+    }
+
+    // Hide all chapters except selected one
+    chapters.forEach((chapter, i) => {
+        chapter.hidden = i !== index;
+    });
+
+    currentChapter = index;
+
+    // Back button appears after first chapter
+    updateBackButton();
+
+    // Return to top
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+}
+
+// Update back button
+function updateBackButton() {
+
+    if (!backBtn) return;
+
+    backBtn.hidden = currentChapter === 0;
+}
+
+// Go to previous chapter
+if (backBtn) {
+
+    backBtn.addEventListener("click", () => {
+
+        if (currentChapter > 0) {
+            showChapter(currentChapter - 1);
+        }
+
+    });
+}
+
+// Initial button state
+updateBackButton();
 
