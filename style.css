@@ -1505,3 +1505,17 @@ h3,
     filter: drop-shadow(0 3px 5px rgba(166, 78, 120, 0.2));
 }
 
+
+/* FIX ENVELOPE LETTER TEXT COLOR ON IPHONE */
+
+.envelope .letter,
+.envelope .letter span,
+.envelope .letter strong {
+    color: #292329 !important;
+    -webkit-text-fill-color: #292329 !important;
+}
+
+.envelope .letter .letter-signature {
+    color: #b87997 !important;
+    -webkit-text-fill-color: #b87997 !important;
+}
